@@ -1,0 +1,159 @@
+import os,time,random
+
+def Character1(Wizard, Elf, Knight, Chef):
+  Character1=random.choice([Wizard, Elf, Knight, Chef])
+  if Character1 == "Wizard":
+    print("You are the POWERFUL", CharacName1, ",you're a \033[34m Wizard\033[0m.")
+  elif Character1 == "Elf":
+    print("You are the SNEAKY",CharacName1, ",you're an \033[32m Elf! \033[0m")
+  elif Character1 == "Knight":
+    print("You're",CharacName1,"the MIGHTY,you're a ferocious \033[31mKnight!\033[0m")
+  elif Character1 == "Chef":
+    print("You're the boistrous",CharacName1,",you're a CUNNING \033[33m Chef.\033[0m") 
+  return Character1
+
+def Character2(Wizard, Elf, Knight, Chef):
+  Character2=random.choice([Wizard, Elf, Knight, Chef])
+  if Character2 == "Wizard":
+    print("You are the POWERFUL", CharacName2, ",you're a \033[34m Wizard\033[0m.")
+  elif Character2 == "Elf":
+    print("You are the SNEAKY",CharacName2, ",you're an \033[32m Elf! \033[0m")
+  elif Character2 == "Knight":
+    print("You're",CharacName2,"the MIGHTY,you're a ferocious \033[31mKnight!\033[0m")
+  elif Character2 == "Chef":
+    print("You're the boistrous",CharacName2,",you're a CUNNING \033[33m Chef.\033[0m") 
+  return Character2
+
+def RollDice(side):
+  Dice=random.randint(1,side)
+  return Dice
+
+
+def Health():
+  HealthP1=int(RollDice(6)*RollDice(12/2)+12)
+  return HealthP1
+  
+
+def Strength():
+  StrengthP1=int(RollDice(6)*RollDice(8/2)+5)
+  return StrengthP1
+
+
+
+
+
+                               
+
+print("\033[36m CHARACTER BUILDER! \033[0m")
+print("")
+print("What is your character's name? ")
+CharacName1=input(">")
+print("")
+Character1("Wizard", "Elf", "Knight", "Chef")
+print("")
+print(CharacName1)
+print("")
+chara1HP = Health()
+chara1str= Strength()
+print("Your Health stat is", chara1HP)
+print("Your Strength stat is", chara1str)
+
+print("")
+print("")
+
+print("Now for player 2!")
+print("What is your character's name? ")
+CharacName2=input(">")
+Character2("Wizard", "Elf", "Knight", "Chef")
+print("")
+chara2HP = Health()
+chara2str= Strength()
+print(CharacName2)
+print("")
+print("Your Health stat is", chara2HP)
+print("Your Strength stat is", chara2str)
+time.sleep(5)
+os.system("clear")
+print (CharacName1)
+print("Health:", chara1HP)
+print("Strength:",chara1str)
+print("")
+print(CharacName2)
+print("Health:",chara2HP)
+print("Strength:", chara2str)
+print("")
+print(CharacName1, "vs", CharacName2, "!")
+print("Your battle will be legendary")
+time.sleep(4)
+os.system("clear")
+
+round=1
+while True:
+  os.system("clear")
+  print ("\033[31m",CharacName1,"\033[0m")
+  print("Health:", chara1HP)
+  print("Strength:",chara1str)
+  print("")
+  print("\033[34m",CharacName2,"\033[0m")
+  print("Health:",chara2HP)
+  print("Strength:", chara2str)
+  print("")
+  print("")
+
+
+  
+  print("LET'S BATTLE!")
+  input(f"{CharacName1},press enter to roll the dice")
+  BattleDice1=random.randint(1,6)
+  print("You rolled a", BattleDice1)
+  time.sleep(2)
+  print("")
+  print("Now it's", CharacName2,"'s turn!")
+  input(f"{CharacName2},press enter to roll the dice")
+  BattleDice2=random.randint(1,6)
+  print("You rolled a", BattleDice2)
+
+
+  if BattleDice1 > BattleDice2:
+    round +=1
+    print("\033[31m", CharacName1,"\033[0m" "wins the round!")
+    time.sleep(2)
+    print("")
+    chara2HP=chara2HP-(abs(chara1str-chara2str)+1)
+    if chara2HP > 0 and chara2HP <= 7:
+      print("")
+      print("\033[34m",CharacName2,"\033[0m""is getting weak!")
+      print("\033[31m", CharacName1,"\033[0m""finish them off!")
+    elif chara2HP <= 0:
+      print("")
+      print("\033[31m",CharacName1,"\033[36m WINS THE BATTLE")
+      print("IN", round, "ROUNDS!!!!""\033[0m")
+      break
+    time.sleep(2)
+  elif BattleDice2 > BattleDice1:
+    round +=1
+    print("\033[34m",CharacName2,"\033[0m" "wins the round!")
+    time.sleep(2)
+    chara1HP=chara1HP-(abs(chara1str-chara2str)+1)
+    time.sleep(2)
+    os.system("clear")
+    print("")
+    if chara1HP > 0 and chara1HP <= 7:
+      print("")
+      print("\033[31m",CharacName1,"\033[0m" "is getting weak!")
+      print("\033[34m",CharacName2,"\033[0m" "finish them off!")
+      print("")
+    elif chara1HP <= 0:
+      print("")
+      print("\033[34m",CharacName2,"\033[36m WINS THE BATTLE")
+      print("IN", round, "ROUNDS!!!!""\033[0m")
+      break
+  else:
+    round+=1
+    print("It's a tie! Keep Battling!!!")
+    print("\033[35m""TO THE DEATH!!""\033[0m")
+    time.sleep(2)
+    print("")
+  continue
+
+  
